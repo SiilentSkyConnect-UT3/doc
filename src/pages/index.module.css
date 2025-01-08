@@ -1,23 +1,100 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Space between sections */
+  align-items: center; /* Align sections vertically */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #87CEFA 0%, #e6f7ff 100%);
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.towerSection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 30%; /* Tower occupies 30% of the width */
+  height: 100%; /* Full height of the viewport */
+}
+
+.tower {
+  height: 100%; /* Tower stretches to the full height */
+  width: auto;
+}
+
+.textSection {
+  position: absolute;
+  right: 10%; /* Move to the center right */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: flex-start; /* Keep text aligned left */
+  text-align: left;
+  width: 40%; /* Text section width */
+  height: 100%;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  color: #555;
+}
+
+.rightSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%; /* Plane section occupies 30% of the width */
+}
+
+.plane {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 20vw;
+  max-width: 300px;
+  height: auto;
+  animation: planeFloat 5s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes planeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tower {
+    height: 80vh;
+  }
+  .textSection {
+    right: 5%; /* Adjust text position */
+    width: 80%; /* Make text wider on smaller screens */
+    padding: 1rem;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  .plane {
+    width: 30vw;
+  }
 }
