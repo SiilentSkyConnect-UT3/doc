@@ -56,3 +56,10 @@ Le régulateur utilisé dans le circuit est le **TL1963A**, capable de fournir j
 
 ## Conclusion
 Le régulateur **TL1963A** n'est **pas suffisant** pour alimenter le circuit dans des conditions de pire cas. Il faudra envisager un régulateur capable de fournir au moins **2 A** pour couvrir les besoins du circuit en toute sécurité, ou bien revoir la gestion des moteurs haptiques pour réduire la consommation maximale.
+
+## TODO
+
+- Ajouter un switch on/off pour allumer/éteindre le système.
+- Ajouter des points de test pour debugger les différentes parties du circuit.
+- Modifier le design pour intégrer un régulateur plus puissant.
+- Choisir la batterie en fonction de la consommation maximale.
