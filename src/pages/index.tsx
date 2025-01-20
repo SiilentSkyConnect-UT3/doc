@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
 
         {/* CENTER RIGHT TEXT SECTION */}
         <section className={styles.textSection}>
-          <h1 className={styles.title}>Siilent Ski Project</h1>
+          <h1 className={styles.title}>Siilent Sky Project</h1>
           <p className={styles.subtitle}>Communication with Haptic</p>
         </section>
 

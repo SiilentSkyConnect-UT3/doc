@@ -2,117 +2,112 @@
 sidebar_position: 3
 ---
 
-# Dimensionnement de la Batterie pour le TPS62827DMQ
+# Évaluation de la Capacité Batterie
 
-![Capacité de la batterie](./output.png)
+Ce document détaille le dimensionnement d’une batterie LiPo pour alimenter un circuit à **3,3 V** via le régulateur **TPS630250RNCT**. Deux scénarios sont considérés : un pic de charge (1,8 A pendant 3 h) et un fonctionnement nominal (1,1 A pendant 3 h). Un graphique, inséré un peu plus bas, illustre la corrélation entre la capacité de la batterie et le temps d’utilisation pour ces deux situations.
 
-## Scénario pire cas : Consommation maximale du système (1,8 A)
+## Choix du Régulateur
 
-Déterminer la capacité nécessaire d’une batterie **LiPo 1S** pour alimenter le régulateur **TPS62827DMQ**, délivrant **3,3 V à 1,8 A** pendant au moins **3 heures**.
+Le composant **TPS630250RNCT** a été sélectionné à l’aide de l’outil en ligne [WEBENCH® Power Designer de Texas Instruments](https://webench.ti.com/power-designer/). Cet outil compare les régulateurs selon leur rendement, leur plage de tensions d’entrée et de sortie, et leur courant maximal. Dans notre cas, le TPS630250RNCT offre une bonne combinaison de rendement (environ 92,15 % typique) et de capacité à maintenir 3,3 V sur une tension de batterie variant autour de 3,7 V (1S LiPo).
 
-### 1. Puissance requise à la sortie
-La puissance de sortie est calculée par :
-$$
-P_{\text{out}} = V_{\text{out}} \times I_{\text{out}}
-$$
+:::note
+Consultez la fiche générée par WEBENCH® pour des informations plus précises sur le dimensionnement des composants passifs et sur les performances du régulateur. **[PDF](./WBDesign.pdf)**
+:::
 
-- $$ V_{\text{out}} = 3,3 \, \text{V} $$
-- $$ I_{\text{out}} = 1,8 \, \text{A} $$
+## Méthodologie de Calcul
 
-$$
-P_{\text{out}} = 3,3 \times 1,8 = 5,94 \, \text{W}
-$$
+Les calculs s’appuient sur :
+- La **puissance de sortie** (3,3 V)  
+- L’**efficacité** typique du TPS630250RNCT (92,15 %)  
+- La **tension nominale** d’une batterie LiPo 1S (3,7 V)  
+- Une **marge de sécurité** de 20 %
 
-### 2. Considération du rendement
-Avec un rendement ($$\eta$$) estimé à **90 %**, la puissance nécessaire en entrée devient :
-$$
-P_{\text{in}} = \frac{P_{\text{out}}}{\eta}
-$$
+Le but est d’estimer l’autonomie pour 3 heures de fonctionnement dans deux scénarios, en déduisant la capacité requise (en Ah).
 
-$$
-P_{\text{in}} = \frac{5,94}{0,9} \approx 6,6 \, \text{W}
-$$
+### Scénario 1 : Pire Cas (1,8 A pendant 3 h)
 
-### 3. Courant requis par la batterie
-Pour une batterie **1S LiPo** avec une tension nominale de **3,7 V** :
-$$
-I_{\text{batt}} = \frac{P_{\text{in}}}{V_{\text{batt}}}
-$$
+1. **Puissance en sortie**  
+   $$
+   P_{\text{out}} = V_{\text{out}} \times I_{\text{out}} = 3.3 \times 1.8 = 5.94 \,\text{W}
+   $$
 
-$$
-I_{\text{batt}} = \frac{6,6}{3,7} \approx 1,78 \, \text{A}
-$$
+2. **Puissance en entrée**  
+   $$
+   P_{\text{in}} = \frac{P_{\text{out}}}{\eta} = \frac{5.94}{0.9215} \approx 6.45 \,\text{W}
+   $$
 
-### 4. Capacité requise de la batterie
-Pour garantir une autonomie de **3 heures**, la capacité nécessaire est :
-$$
-C_{\text{batt}} = I_{\text{batt}} \times \text{Temps}
-$$
+3. **Courant sur la batterie**  
+   $$
+   I_{\text{batt}} = \frac{P_{\text{in}}}{V_{\text{batt}}} = \frac{6.45}{3.7} \approx 1.74 \,\text{A}
+   $$
 
-$$
-C_{\text{batt}} = 1,78 \times 3 \approx 5,34 \, \text{Ah}
-$$
+4. **Capacité nécessaire**  
+   $$
+   C_{\text{batt}} = I_{\text{batt}} \times 3 = 1.74 \times 3 \approx 5.22 \,\text{Ah}
+   $$
 
-### 5. Ajout d’une marge de sécurité
-En ajoutant une **marge de 20 %** pour tenir compte des pertes et de l’usure :
-$$
-C_{\text{batt, ajustée}} = C_{\text{batt}} \times 1,2
-$$
+5. **Marge de sécurité**  
+   $$
+   C_{\text{batt, adjusted}} = 5.22 \times 1.2 \approx 6.26 \,\text{Ah}
+   $$
 
-$$
-C_{\text{batt, ajustée}} = 5,34 \times 1,2 \approx 6,4 \, \text{Ah}
-$$
+:::info[**Conclusion (Pire Cas)**]
+Pour soutenir 1,8 A pendant 3 heures, une batterie 1S LiPo d’environ **6,26 Ah** est recommandée.
+:::
 
-### Résultat
+### Scénario 2 : Cas Nominal (1,1 A pendant 3 h)
 
-Une batterie **1S LiPo** avec une capacité minimale de **6,4 Ah** est requise pour alimenter le système pendant **3 heures**.
+1. **Puissance en sortie**  
+   $$
+   P_{\text{out}} = 3.3 \times 1.1 = 3.63 \,\text{W}
+   $$
 
----
+2. **Puissance en entrée**  
+   $$
+   P_{\text{in}} = \frac{3.63}{0.9215} \approx 3.94 \,\text{W}
+   $$
 
-## Scénario alternatif : Consommation nominale du système (1,1 A)
+3. **Courant sur la batterie**  
+   $$
+   I_{\text{batt}} = \frac{3.94}{3.7} \approx 1.06 \,\text{A}
+   $$
 
-Dans ce scénario, la consommation est réduite à **1,1 A**.
+4. **Capacité nécessaire**  
+   $$
+   C_{\text{batt}} = 1.06 \times 3 \approx 3.18 \,\text{Ah}
+   $$
 
-### 1. Puissance de sortie :
+5. **Marge de sécurité**  
+   $$
+   C_{\text{batt, adjusted}} = 3.18 \times 1.2 \approx 3.82 \,\text{Ah}
+   $$
 
-$$
-P_{\text{out}} = 3,3 \times 1,1 = 3,63 \, \text{W}
-$$
+:::info[**Conclusion (Cas Nominal)**]
+Pour couvrir 1,1 A pendant 3 heures, une batterie 1S LiPo d’environ **3,82 Ah** est conseillée.
+:::
 
-### 2. Puissance en entrée :
+## Graphique du Temps d’utilisation en fonction de la capacité
 
-$$
-P_{\text{in}} = \frac{3,63}{0,9} \approx 4,03 \, \text{W}
-$$
+Le graphique ci-dessous représente la durée de fonctionnement selon la capacité de la batterie, pour les deux scénarios étudiés (pire cas et nominal).
 
-### 3. Courant de la batterie :
+![Temps d'Utilisation vs. Capacité](./batt.png)
 
-$$
-I_{\text{batt}} = \frac{4,03}{3,7} \approx 1,09 \, \text{A}
-$$
+La courbe supérieure (en rouge) illustre le cas nominal, moins exigeant en courant, tandis que la courbe inférieure (en bleu) représente le pire cas où l’on tire 1,8 A de manière continue.  
 
-### 4. Capacité de la batterie :
+## Conclusion et Choix de Batterie
 
-$$
-C_{\text{batt}} = 1,09 \times 3 \approx 3,27 \, \text{Ah}
-$$
+En tenant compte de la marge de sécurité et d’un rendement moyen d’environ 92,15 %, la capacité à prévoir varie entre 3,82 Ah (scénario nominal) et 6,26 Ah (scénario de pointe).  
 
-### 5. Marge de sécurité :
+Dans ce projet, nous avons finalement opté pour **deux batteries de 1,9 Ah** montées **en parallèle** (totalisant environ 3,8 Ah). Chaque batterie est **chargée individuellement**, ce qui évite les contraintes d’équilibrage et s’adapte mieux aux dimensions du produit. Cette configuration couvre la consommation nominale et reste compatible avec les contraintes d’encombrement.  
 
-$$
-C_{\text{batt, ajustée}} = 3,27 \times 1,2 \approx 3,92 \, \text{Ah}
-$$
+Toutefois, si des pointes de courant prolongées sont prévues, il serait prudent de prévoir un module d’alimentation supplémentaire ou d’augmenter la capacité totale en conséquence. 
 
-### Résultat
+:::note
+Les calculs présentés ici restent théoriques et les cas présentés illustrent une utilisation continue de l'ensemble des moteurs haptiques. Cela justifie le choix d'une capacité de légèrement plus faible que ce qui est calculé ici.
+:::
 
-Une batterie **1S LiPo** de **4 Ah** est necessaire pour alimenter le système pendant **3 heures**.
+## Références
 
----
-
-## Choix de la Batterie
-
-La batterie **LP103450JH+PCM+PTC+2 WIRES 70MM** a été choisie car elle offre un bon équilibre entre capacité et taille. Avec une capacité de 1,92 Ah et des dimensions compactes (52 x 34,5 x 10,8 mm).
-
-Pour augmenter l’autonomie, deux ou trois batteries peuvent être utilisées en parallèle. Cela permet d’obtenir une capacité totale de 3,84 Ah ou 5,76 Ah, selon les besoins. Cette modularité garantit une alimentation suffisante pour les scénarios à forte consommation tout en conservant un format compact.
-
-Enfin, cette batterie intègre un système de protection contre les surtensions, sous-tensions et surintensités, offrant ainsi fiabilité et sécurité pour le système. Elle représente une solution efficace et adaptée au projet.
+- [WEBENCH® Power Designer de Texas Instruments](https://webench.ti.com/power-designer/)
+- [TPS630250RNCT](https://www.ti.com/lit/ds/symlink/tps630250.pdf)
+- [LP103450JH+PCM+PTC+2 WIRES 70MM](https://www.digikey.fr/fr/products/detail/jauch-quartz/LP103450JH-PCM-PTC-2-WIRES-70MM/13540136)
