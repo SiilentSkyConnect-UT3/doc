@@ -2,20 +2,34 @@
 sidebar_position: 0
 ---
 
-# Exigences
+# Exigences Matérielles
 
-## Objectif du Projet
+## Alimentation
 
-L'objectif est de développer un système intégré capable de piloter des moteurs haptiques, offrant un retour tactile précis et interactif. Le système doit être fiable, performant et économe en énergie, adapté aux applications embarquées.
+- **Source d’alimentation USB**  
+  - Alimentation en 5 V via un connecteur USB-C.  
+  - Protection contre les surtensions (diodes TVS ou équivalent).  
 
-## Besoins Fonctionnels
+- **Batterie LiPo (1S)**  
+  - Assurer au moins 3 heures d’autonomie dans des conditions d’utilisation standard.  
+  - Mettre en place un circuit de charge dédié, avec bascule automatique entre USB et batterie pour une alimentation ininterrompue.  
+  - Inclure un régulateur de tension (3,3 V) capable de fournir suffisamment de courant pour le microcontrôleur et les drivers, avec une marge de sécurité.
 
-Le système doit inclure un microcontrôleur programmable, chargé de gérer les communications, le contrôle des moteurs haptiques et l’interfaçage avec des périphériques externes. Les moteurs haptiques doivent être contrôlés par des drivers permettant un pilotage individuel, avec des vibrations précises et personnalisables. Un mécanisme de communication standardisé est nécessaire pour recevoir des commandes et transmettre des états.
+## Pilotage Haptique
 
-## Besoins Énergétiques
+- **Drivers Haptiques**  
+  - Un driver par moteur ou un multiplexeur I²C si plusieurs moteurs partagent la même adresse.  
+  - Possibilité de générer des profils de vibration variés (effets prédéfinis ou personnalisés).
 
-Le système doit fonctionner avec une alimentation flexible, incluant un connecteur USB et une batterie rechargeable offrant une autonomie d’au moins 3 heures. La batterie sera gérée par un circuit de charge sécurisé, avec une transition automatique entre USB et batterie pour garantir une alimentation ininterrompue. Un régulateur de tension stable est requis pour alimenter les composants critiques.
+- **Moteurs Haptiques (ERM ou LRA)**  
+  - Compatibles avec la tension d’alimentation de 3,3 V (ou 3,7 V nominal pour un fonctionnement direct sur batterie).  
+  - Prévoir des connecteurs standard (type JST) pour un remplacement ou un ajout de moteurs sans difficulté.
 
-## Besoins en Interface et Communication
+## Interface Physique
 
-Une interface simple et efficace doit permettre la communication entre l’utilisateur et le microcontrôleur, pour flasher le firmware et configurer les moteurs haptiques.
+- **Connecteur de Programmation/Communication**  
+  - Liaison série (type USB-to-UART ou équivalent) permettant la mise à jour du firmware et l’accès au débogage.
+
+- **Connecteur USB-C**  
+  - Nécessaire pour l’alimentation principale et la charge de la batterie.  
+  - Doit être protégé contre les décharges électrostatiques (ESD) et disposer d’une rétention mécanique suffisante.
