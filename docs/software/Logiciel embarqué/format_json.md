@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ## Introduction
 
-Les messages JSON permettent de configurer et contrôler les vibrations haptiques des bracelets via MQTT. Voici leur structure et utilisation.
+Les messages JSON permettent de configurer et contrôler les vibrations haptiques des bracelets via MQTT.
 
 :::info
 Pour réaliser l'ensemble de nos tests, nous avons mis en place un broker MQTT à l'adresse 178.170.38.88 et le port 55555.
