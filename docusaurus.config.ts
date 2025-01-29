@@ -12,14 +12,14 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://SilentSkyConnect-UT3.github.io',
+  url: 'https://SiilentSkyConnect-UT3.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/doc',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'SilentSkyConnect-UT3', // Usually your GitHub org/user name.
+  organizationName: 'SiilentSkyConnect-UT3', // Usually your GitHub org/user name.
   projectName: 'doc', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
@@ -70,7 +70,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/SilentSkyConnect-UT3',
+          href: 'https://github.com/SiilentSkyConnect-UT3',
           label: 'GitHub',
           position: 'right',
         },
