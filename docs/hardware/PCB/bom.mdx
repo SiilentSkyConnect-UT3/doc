@@ -1,0 +1,49 @@
+---
+sidebar_position: 6
+sidebar_label: BOM Intéractif
+title: ESP32-C3 Haptic Driver
+pagination_next: null
+pagination_prev: null
+---
+
+import React from 'react';
+
+<style>
+{`
+  /* Cache les éléments inutiles de la doc sans affecter l'iframe */
+  .theme-doc-title,
+  .theme-doc-footer,
+  .theme-doc-breadcrumbs {
+    display: none !important;
+  }
+
+  /* Ajuste l'iframe pour qu'il remplisse l'espace sans toucher la sidebar */
+  .iframeContainer {
+    position: absolute;
+    top: var(--ifm-navbar-height); /* Place l'iframe juste sous le header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--ifm-navbar-height)); /* Prend toute la hauteur sous le header */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+  }
+
+  .fullPageIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+`}
+</style>
+
+<div className="iframeContainer">
+  <iframe
+    src="/doc/bom"
+    className="fullPageIframe"
+    allowFullScreen
+  />
+</div>
