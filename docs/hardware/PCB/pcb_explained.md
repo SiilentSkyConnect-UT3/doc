@@ -16,6 +16,4 @@ Ce PCB respecte le **stackup [JLC04161H-3313](https://jlcpcb.com/)** de JLCPCB :
 - **Couches extérieures** : dédiées aux **signaux** (pistes de communication, contrôle, etc.).  
 - **Couches intérieures** : l’une sert de **plan de masse (GND)** et l’autre est réservée à l’**alimentation 3,3 V**.
 
-Cette conception multicouche facilite le routage, améliore la **distribution de l’alimentation** et renforce la **protection contre les interférences**. Grâce à cette architecture, le PCB peut accueillir et alimenter correctement tous les composants indispensables au fonctionnement de la manchette haptique, tout en demeurant compact et fiable.
-
 ![Stackup](./layers.png)
