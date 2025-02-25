@@ -7,7 +7,7 @@ sidebar_label: Page Simulation
 # Interface de Simulation  
 
 
-![Simu page](./page.png)
+![Simu page](./simu.png)
 
 La page **Simulation** permet de concevoir et d'exécuter des scénarios à partir des patterns définis dans la page **Patterns**. Ces scénarios sont représentés sous la forme d'une **timeline interactive**, où il est possible d'ajouter, modifier et supprimer des événements.
 
