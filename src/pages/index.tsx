@@ -5,7 +5,7 @@ import planepng from '@site/static/img/plane.png';
 
 export default function Home(): JSX.Element {
   return (
-    <Layout title="Silent Ski Project" description="Communication with Haptic">
+    <Layout title="Siilent Ski Project" description="Communication with Haptic">
       <main className={styles.main}>
         {/* TOWER SECTION */}
         <section className={styles.towerSection}>
