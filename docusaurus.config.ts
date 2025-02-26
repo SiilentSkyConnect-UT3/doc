@@ -9,7 +9,7 @@ import rehypeKatex from 'rehype-katex';
 const config: Config = {
   title: 'Siilent Sky Connect',
   tagline: 'Siilent Sky Connect Documentation',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/bracelet.ico',
 
   // Set the production url of your site here
   url: 'https://SiilentSkyConnect-UT3.github.io',
