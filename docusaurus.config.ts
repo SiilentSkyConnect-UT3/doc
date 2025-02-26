@@ -57,10 +57,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Silent Sky Connect',
+      title: 'Siilent Sky Connect',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/bracelet.png',
       },
       items: [
         {
